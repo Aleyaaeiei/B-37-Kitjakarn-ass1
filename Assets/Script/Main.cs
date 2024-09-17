@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Main : MonoBehaviour
 {
-    IronMan ironMan = new IronMan("Tony", 100, "Red");
-    CaptainAmerica captainAmerica = new CaptainAmerica("Steve", 100, "Blue");
+    public IronMan ironMan;
+    public CaptainAmerica captainAmerica;
 
     void Start()
     {
