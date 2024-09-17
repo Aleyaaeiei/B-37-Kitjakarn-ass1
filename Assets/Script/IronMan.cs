@@ -1,39 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class IronMan
+public class IronMan : SuperHero
 {
-    public string IronName;
-    public int IronHp;
-    public string IronSuitColor;
-    private float armorStrength = 10;
-
-    public IronMan(string newName, int newHp, string newSuitColor)
-    {
-        //???????hp????????????????
-        IronName = newName;
-        IronHp = newHp;
-        IronSuitColor = newSuitColor;
+  public IronMan (string newName, int newHP, string newSuitcolor)
+        : base(newName, newHP, newSuitcolor)
+    { 
     }
+
     public void Fly()
     {
-        //???
-        Debug.Log($"--------{IronName} is Flying!!!");
+        //
+        Debug.Log($"--------{name} is Flying!");
     }
     public void ShootLaser()
     {
-        //???
-        Debug.Log($"========{IronName} is Shooting Lasers!");
+        //
+        Debug.Log($"========{name} is Shooting Laser!");
     }
-    public void UpdateStrength(float strength)
-    {
-        armorStrength += strength;
-        Debug.Log($"{IronName} undateed their armor to {armorStrength}");
-    }
-    public void TakeDamage(int damage)
-    {
-        IronHp -= damage;
-        Debug.Log($"{IronName} take {damage} damage hp: {IronHp}");
-    }
+  
 }

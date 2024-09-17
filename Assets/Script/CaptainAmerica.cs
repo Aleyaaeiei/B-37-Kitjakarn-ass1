@@ -1,39 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class CaptainAmerica
+public class CaptainAmerica : SuperHero
 {
-    public string CaptainName;
-    public int CaptainHp;
-    public string CaptainSuitColor;
-    private float captainArmorStrength = 10;
-
-    public CaptainAmerica(string newName,int newHp,string newSuitColor) 
+    public CaptainAmerica(string newName, int newHP, string newSuitcolor)
+        : base(newName, newHP, newSuitcolor)
     {
-        //ใส่ชื่อhpและสีของกัปตัน
-        CaptainName = newName;
-        CaptainHp = newHp;
-        CaptainSuitColor = newSuitColor;
     }
+
     public void LeapAndJump()
     {
-        Debug.Log($"--------{CaptainName} is Leap and Jump!!!");
+        Debug.Log($"--------{name} is Leap and Jump!!!");
 
     }
     public void ThrowShield()
     {
-        Debug.Log($"========={CaptainName} is Trowing Shield!!!");
+        Debug.Log($"========={name} is Trowing Shield!!!");
 
     }
-    public void UpdateStrength(float strength)
-    {
-        captainArmorStrength += strength;
-        Debug.Log($"{CaptainName} undateed their armor to {captainArmorStrength}");
-    }
-    public void TakeDamage(int damage)
-    {
-        CaptainHp -= damage;
-        Debug.Log($"{CaptainName} take {damage} damage hp: {CaptainHp}");
-    }
+    
 }

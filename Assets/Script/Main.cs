@@ -4,29 +4,34 @@ using UnityEngine;
 
 public class Main : MonoBehaviour
 {
+    IronMan ironMan = new IronMan("Tony", 100, "Red");
+    CaptainAmerica captainAmerica = new CaptainAmerica("Steve", 100, "Blue");
+
     void Start()
     {
-        Debug.Log("*** Superheros fight!!!!");
-        //ใส่ชื่อhpและสีของกัปตัน
-        CaptainAmerica captainAmerica = new CaptainAmerica("Steve", 100, "Yellow");
-        //ใส่ชื่อhpและสีของไอรอนแมน
-        IronMan ironMan = new IronMan("Tony", 100 ,"Red");
-        Debug.Log($"IronMan name: {ironMan.IronName}, Hp: {ironMan.IronHp}, Suit Color: {ironMan.IronSuitColor}");
-        Debug.Log($"CaptainAmerica name: {captainAmerica.CaptainName}, Hp: {captainAmerica.CaptainHp}, Suit Color: {captainAmerica.CaptainSuitColor}");
-        ironMan.UpdateStrength(5.25f);
-        captainAmerica.UpdateStrength(5.25f);
-        //เริ่มต่อสู้
-        for ( int i = 0; i<5; i++)
-        {
-            ironMan.ShootLaser();
-            //สุ่มdamageของไอรอนแมน
-            int random = Random.Range(10, 21);
-            captainAmerica.TakeDamage(random);
-            captainAmerica.ThrowShield();
-            //สุ่มdamageของกัปตัน
-            random = Random.Range(10, 21);
-            ironMan.TakeDamage(random);
-        }
+      
+        Debug.Log($"IronMan name: {ironMan.Name}, Hp: {ironMan.Hp}, Color: {ironMan.SuitColor}");
+        Debug.Log($"CaptainAmerica name: {captainAmerica.Name}, Hp: {captainAmerica.Hp}, Suit Color: {captainAmerica.SuitColor}");
+
+        ironMan.UpdateArmor(5.25f);
+        captainAmerica.UpdateArmor(5.5f);
         
-    }    
+    }
+
+    private void Update()
+    {
+        if (!ironMan.IsDead() || captainAmerica.IsDead())
+        {
+            return;
+        }
+        // Iron man turn
+        ironMan.ShootLaser();
+        int randomDamage = Random.Range(10, 21);
+        captainAmerica.TakeDamage(randomDamage);
+
+        // captain America turn
+        captainAmerica.ThrowShield();
+        randomDamage = Random.Range(10, 21);
+        ironMan.TakeDamage(randomDamage);
+    }
 }
